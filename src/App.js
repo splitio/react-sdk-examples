@@ -21,7 +21,8 @@ class App extends Component {
     // features object is used only for off-the-grid mode
     const config = {
       core: {
-        authorizationKey: 'localhost'
+        authorizationKey: 'localhost',
+        key: 'customer-key'
       },
       features: {
         'Test_Split': 'on',
