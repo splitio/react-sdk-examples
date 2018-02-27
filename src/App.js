@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import splitioFactory from '@splitsoftware/splitio';
+import { SplitFactory } from '@splitsoftware/splitio';
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class App extends Component {
       }
     };
 
-    const sdkFactory = splitioFactory(config)
+    const sdkFactory = SplitFactory(config)
     const sdkClient = sdkFactory.client();
 
     // we need to wait the sdk to finish loading and then we can retrieve the
