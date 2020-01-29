@@ -1,12 +1,12 @@
 import React from 'react';
-import { Route, Link, BrowserRouter } from 'react-router-dom'
+import { Route, Link, BrowserRouter } from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import PageUsingComponents from './pages/PageUsingComponents';
 import PageUsingHOCs from './pages/PageUsingHOCs';
 import PageUsingHooks from './pages/PageUsingHooks';
 
-const App = () => {
+export default function App() {
   return (
     <div className="App">
       <BrowserRouter>
@@ -39,5 +39,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;

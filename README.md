@@ -1,4 +1,4 @@
-# Splitio-React SDK: Simple-Page App Example
+# Splitio-React SDK: Single-Page App Example
 
 This is a basic SPA example that demonstrate the use of `Splitio-React SDK`.
 

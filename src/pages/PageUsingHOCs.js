@@ -2,9 +2,9 @@ import React from 'react';
 import { withSplitClient, withSplitTreatments } from '@splitsoftware/splitio-react';
 import { feature_1, feature_2, feature_3 } from '../sdkConfig';
 
-/* This example showcasts withSplitClient and withSplitTreatments HOCs */
+/* This example shows withSplitClient and withSplitTreatments HOCs */
 
-const Loading = () => {
+function Loading() {
   return <div>Loading SDK...</div>
 }
 
@@ -36,11 +36,11 @@ const OtherSplits = withSplitClient('other_user')(
   )
 );
 
-export default () => {
+export default function PageUsingHOCs() {
   return (
     <main>
       <TestSplit />
       <OtherSplits />
     </main>
   );
-}
+};

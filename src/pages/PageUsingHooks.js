@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useClient, useTreatments } from '@splitsoftware/splitio-react';
 import { feature_1, feature_2, feature_3 } from '../sdkConfig';
 
-/* This example showcasts useClient and useTreatments hooks */
+/* This example shows useClient and useTreatments hooks */
 
-const Loading = () => {
+function Loading() {
   return <div>Loading SDK...</div>
 }
 
-export default () => {
+export default function PageUsingHooks() {
 
   const treatment = useTreatments([feature_1]);
 
@@ -43,4 +43,4 @@ export default () => {
       {OtherFeatures}
     </main>
   )
-}
+};
