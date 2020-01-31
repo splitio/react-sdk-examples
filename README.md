@@ -1,6 +1,6 @@
 # Splitio-React SDK: Single-Page App Example
 
-This is a basic SPA example that demonstrate the use of `Splitio-React SDK`.
+This is a basic SPA example that demonstrate the use of [Split SDK for React](https://github.com/splitio/react-client).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
