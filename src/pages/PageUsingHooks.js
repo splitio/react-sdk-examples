@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useClient, useTreatments } from '@splitsoftware/splitio-react';
+import React, { useContext } from 'react';
+import { useClient, useTreatments, SplitContext } from '@splitsoftware/splitio-react';
 import { feature_1, feature_2, feature_3 } from '../sdkConfig';
 
 /* This example shows useClient and useTreatments hooks */
@@ -7,6 +7,10 @@ import { feature_1, feature_2, feature_3 } from '../sdkConfig';
 function Loading() {
   return <div>Loading SDK...</div>
 }
+
+function Timedout() {
+  return (<div>SDK timed out (check your API key)</div>);
+};
 
 export default function PageUsingHooks() {
 
@@ -19,9 +23,8 @@ export default function PageUsingHooks() {
     </div>
   );
 
-  const [isReady, setReady] = useState(false);
   const client = useClient('other_user');
-  client.ready().then(() => { setReady(true) });
+  const { isReady, isTimedout } = useContext(SplitContext);
 
   const treatments = client.getTreatmentsWithConfig([feature_2, feature_3]);
   const OtherFeatures = (
@@ -34,7 +37,8 @@ export default function PageUsingHooks() {
           </div>
         )
       }</div>
-    ) : <Loading />
+    ) :
+      isTimedout ? <Timedout /> : <Loading />
   );
 
   return (
