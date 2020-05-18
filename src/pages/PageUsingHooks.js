@@ -30,7 +30,7 @@ export default function PageUsingHooks() {
   ) : <Loading />;
 
   /* `useClient` returns an SDK client with a given optional user key and traffic type.
-   * If not key is provided, it returns the client at SplitContext. */
+   * If key is not provided, it returns the client at SplitContext. */
   const client = useClient('other_user');
   const treatments = client.getTreatmentsWithConfig([feature_2, feature_3]);
   const OtherFeatures = (
