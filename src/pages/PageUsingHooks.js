@@ -14,18 +14,24 @@ function Timedout() {
 
 export default function PageUsingHooks() {
 
+  /* `useContext(SplitContext)` lets you access the SDK status (`isReady`, `isTimedout`, `lastUpdate`) when using hooks,
+   * to conditionally render your components, for example, showing a Loading label until the SDK is ready. */
+  const { isReady, isTimedout } = useContext(SplitContext);
+
+  /* `useTreatments` returns the evaluated treatments of the given list of split names.
+   * While the SDK is not ready, treatments values are `control`. */
   const treatment = useTreatments([feature_1]);
 
-  const FeatureOne = (
+  const FeatureOne = isReady ? (
     <div className="App-section">
       <h4>{`Split: ${feature_1}`}</h4>
       <p>{`Treatment value: ${treatment[feature_1].treatment}`}</p>
     </div>
-  );
+  ) : <Loading />;
 
+  /* `useClient` returns an SDK client with a given optional user key and traffic type.
+   * If not key is provided, it returns the client at SplitContext. */
   const client = useClient('other_user');
-  const { isReady, isTimedout } = useContext(SplitContext);
-
   const treatments = client.getTreatmentsWithConfig([feature_2, feature_3]);
   const OtherFeatures = (
     isReady ? (
