@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import { render, waitFor, getByText } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import { SplitFactory, SplitTreatments } from "@splitsoftware/splitio-react";
 
 const config = {
@@ -15,49 +15,50 @@ const config = {
     key: "default",
   },
   features: {
-    "test-feature-on": "on",
-    "test-feature-off": "off",
-  },
-  storage: {
-    type: "LOCALSTORAGE",
+    "test-feature-on": "on", // example with just a string value for the treatment
+    "test-feature-off": { treatment: "off", config: '{ "color": "blue" }' }, //example of a defined config
   }
 };
 
 const ExampleSplitComponent = ({ splits }) => {
-  return splits.map(split => {
+  return splits.map((split, index) => {
     return (
-      <SplitTreatments names={[split]} key={split}>
-        {(props) => {
-          return props.isReady ?
-            <div>SDK ready. Split {split} is {props.treatments[split].treatment}</div> :
-            <div>SDK not ready. Split {split} is {props.treatments[split].treatment}</div>;
-        }}
-      </SplitTreatments>
+      <div key={index}>
+        <SplitTreatments names={[split]}>
+          {({ isReady, treatments }) => {
+            return <div>{isReady ? 'SDK ready.' : 'SDK not ready.'} Split {split} is {treatments[split].treatment}</div>
+          }}
+        </SplitTreatments>
+      </div>
     );
   });
 };
 
-test("renders the correct text and updates the count", async () => {
-  const { container } = render(
-    <SplitFactory config={config}>
-      <ExampleSplitComponent splits={["test-feature-on", "test-feature-off"]} />
-    </SplitFactory>
-  );
+describe('ExampleSplitComponent', () => {
+  test("renders the correct treatment", async () => {
+    const { getByText, findByText } = render(
+      <SplitFactory config={config}>
+        <ExampleSplitComponent splits={["test-feature-on", "test-feature-off"]} />
+      </SplitFactory>
+    );
 
-  // On the initial rendered output, the SDK is not ready. So treatment values are control.
-  expect(getByText(container, "SDK not ready. Split test-feature-on is control")).toBeTruthy();
-  expect(getByText(container, "SDK not ready. Split test-feature-off is control")).toBeTruthy();
+    // On the initial rendered output, the SDK is not ready. So treatment values are control.
+    expect(getByText("SDK not ready. Split test-feature-on is control")).toBeTruthy();
+    expect(getByText("SDK not ready. Split test-feature-off is control")).toBeTruthy();
 
-  // Since we run the SDK in localhost mode, on next tick the SDK is ready and the component re-rendered with the mocked treatment.
-  // We uses waitFor (https://testing-library.com/docs/dom-testing-library/api-async/#waitfor) to wait for the component to update.
-  const [featureOn, featureOff] = await waitFor(
-    () => [
-      getByText(container, "SDK ready. Split test-feature-on is on"),
-      getByText(container, "SDK ready. Split test-feature-off is off"),
-    ],
-    { container }
-  );
+    // In localhost mode, the SDK is ready and the component re-rendered with the mocked treatment on next event-loop tick.
+    // So we use `findByText` to wait for the component to update.
+    expect(await findByText("SDK ready. Split test-feature-on is on")).toBeTruthy();
+    expect(await findByText("SDK ready. Split test-feature-off is off")).toBeTruthy();
 
-  expect(featureOn).toBeTruthy();
-  expect(featureOff).toBeTruthy();
+    // `waitFor` (https://testing-library.com/docs/dom-testing-library/api-async/#waitfor) can also be used:
+    const [featureOn, featureOff] = await waitFor(
+      () => [
+        getByText("SDK ready. Split test-feature-on is on"),
+        getByText("SDK ready. Split test-feature-off is off"),
+      ]
+    );
+    expect(featureOn).toBeTruthy();
+    expect(featureOff).toBeTruthy();
+  });
 });
