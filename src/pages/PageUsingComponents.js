@@ -22,7 +22,7 @@ export default function PageUsingComponents() {
           * While the SDK is not ready, treatments values are `control`. */}
         {({ treatments, isReady }) => {
           return isReady ? (
-            <div className="App-section">
+            <div className='App-section'>
               <h4>{`Split: ${feature_1}`}</h4>
               <p>{`Treatment value: ${treatments[feature_1].treatment}`}</p>
             </div>
@@ -32,13 +32,13 @@ export default function PageUsingComponents() {
 
       {/* `SplitClient` changes the SDK client at the context, given a key and a optional traffic type.
         *  Thus, the inner `SplitTreatments` components will evaluate splits for a different key */}
-      <SplitClient splitKey="other_user" updateOnSdkTimedout={true} >
+      <SplitClient splitKey='other_user' updateOnSdkTimedout={true} >
         <SplitTreatments names={[feature_2, feature_3]} >
           {/* In the following piece of UI, we use the `isReady` prop as condition for
             * rendering a `Loading` component until the client with key `other_user` is ready */}
           {({ treatments, isReady, isTimedout }) => {
             return isReady ? (
-              <div className="App-section">{
+              <div className='App-section'>{
                 Object.entries(treatments).map(([splitName, treatment]) =>
                   <div key={splitName} >
                     <h4>{`Split: ${splitName}`}</h4>
