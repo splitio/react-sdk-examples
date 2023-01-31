@@ -23,8 +23,8 @@ const config = {
 const ExampleSplitComponent = ({ splits }) => {
   return splits.map((split, index) => {
     return (
-      <div key={index}>
-        <SplitTreatments names={[split]}>
+      <div key={index} >
+        <SplitTreatments names={[split]} >
           {({ isReady, treatments }) => {
             return <div>{isReady ? 'SDK ready.' : 'SDK not ready.'} Split {split} is {treatments[split].treatment}</div>
           }}
@@ -37,7 +37,7 @@ const ExampleSplitComponent = ({ splits }) => {
 describe('ExampleSplitComponent', () => {
   test('renders the correct treatment', async () => {
     const { getByText, findByText } = render(
-      <SplitFactory config={config}>
+      <SplitFactory config={config} >
         <ExampleSplitComponent splits={['test-feature-on', 'test-feature-off']} />
       </SplitFactory>
     );
