@@ -1,15 +1,10 @@
 // Your SDK settings for browser.
-// Replace authorizationKey with your api browser key.
+// Replace authorizationKey with your client-side API key.
 const config = {
   core: {
-    authorizationKey: 'd4g4sfp0mfp78281ju1cmuitl0udu0oft1bu',
-    key: 'splitKey',
-  },
-  urls: {
-    sdk: 'https://sdk.split-stage.io/api',
-    events: 'https://events.split-stage.io/api',
-    auth: 'https://auth.split-stage.io/api',
-  },
+    authorizationKey: '<your-api-key>',
+    key: '<customer-key>'
+  }
 };
 
 export default config;

@@ -1781,28 +1781,28 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@splitsoftware/splitio-commons@1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio-commons/-/splitio-commons-1.7.3.tgz#d80ad4232cef134a24059357a0cd83fd90667f20"
-  integrity sha512-rWZ05g6eY0YlaDuNDWc3e/cPudbVRX7y8Lp0eKXE1wIFMf9P5pAdQWvb2KiXXsvGepM0FwA9U6epxEqatBIpiA==
+"@splitsoftware/splitio-commons@1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio-commons/-/splitio-commons-1.8.1.tgz#c4841402b05f5bdc76d4f41787d868ee1f151efc"
+  integrity sha512-NHamCh+NwPTjO69kk5e6VaXjASPJzs0u3gWxITjmi0RPvGnNZ2M38/3ya1XSfARNjbDIpgHXlc1iywT07o3lEg==
   dependencies:
     tslib "^2.3.1"
 
-"@splitsoftware/splitio-react@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio-react/-/splitio-react-1.8.1.tgz#4d3cb6cc594c65fea654812415c299f30720335a"
-  integrity sha512-IRJ+9kjWJlTtBCANhaRlXgx781ZxDNB4mb5x7Ian1VETdz+gh+KrZjnFXuT6ndHCjhLHrGEgsItL8ibKGUa8Fg==
+"@splitsoftware/splitio-react@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio-react/-/splitio-react-1.8.2.tgz#3a40db4d5d19a2822cfce5a3a189621229b19f07"
+  integrity sha512-1YexibJNg8gZ5XcGQAr2T8M6r8rRsK3FfP3+vchYQbLJV9Mvfp9BHFq6P8hIMx/V8k9Bc1mo3T8HXP7bc3W1SA==
   dependencies:
-    "@splitsoftware/splitio" "10.22.3"
+    "@splitsoftware/splitio" "10.22.4"
     memoize-one "^5.1.1"
     shallowequal "^1.1.0"
 
-"@splitsoftware/splitio@10.22.3":
-  version "10.22.3"
-  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio/-/splitio-10.22.3.tgz#266874a2b27c96330637127db06192b5641e9d0c"
-  integrity sha512-1MYjuLsTM6N3UEEF+G9Pi8GUw+lEFME8iwbbqaoQxJtHXK6TcQ0i+Kg/yrPXoAuE6RDG17zeltRBfdbZlHrjog==
+"@splitsoftware/splitio@10.22.4":
+  version "10.22.4"
+  resolved "https://registry.yarnpkg.com/@splitsoftware/splitio/-/splitio-10.22.4.tgz#4f21a0694fbac9f5f576ea7c9e847278dc953cc1"
+  integrity sha512-GPglA0RmzgN7SoKGEtgzsa2HdCLei1s3sWKHciLxvdnDIGJRf4s5XdNv1Hu2/f2X8gOTu9O712yYbHLHxUh3fA==
   dependencies:
-    "@splitsoftware/splitio-commons" "1.7.3"
+    "@splitsoftware/splitio-commons" "1.8.1"
     "@types/google.analytics" "0.0.40"
     "@types/ioredis" "^4.28.0"
     bloom-filters "^3.0.0"
