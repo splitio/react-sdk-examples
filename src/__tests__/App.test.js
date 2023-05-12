@@ -38,7 +38,7 @@ describe('ExampleSplitComponent', () => {
   test('renders the correct treatment', async () => {
     const { getByText, findByText } = render(
       <SplitFactory config={config} >
-        <ExampleSplitComponent splits={['test-feature-on', 'test-feature-off']} />
+        <ExampleSplitComponent featureFlagNames={['test-feature-on', 'test-feature-off']} />
       </SplitFactory>
     );
 
