@@ -17,7 +17,7 @@ function Timedout() {
  * It also passes down the SDK status (`isReady`, `isTimedout`, `lastUpdate`) as props. You can use `isReady`
  * to conditionally render your component, for example, by showing a Loading label until the SDK is ready.
  * While the SDK is not ready, treatments values are `control`. */
-const TestSplit = withSplitTreatments([feature_flag_1])(
+const FeatureOne = withSplitTreatments([feature_flag_1])(
   ({ treatments, isReady }) => {
     return isReady ? (
       <div className='App-section'>
@@ -30,7 +30,7 @@ const TestSplit = withSplitTreatments([feature_flag_1])(
 
 /* `withSplitClient` is a HOC for `SplitClient`. It changes the SDK client at the context, given a key and a
  * optional traffic type. Thus, the inner `SplitTreatments` components will evaluate feature flags for a different key */
-const OtherSplits = withSplitClient('other_user')(
+const OtherFeatures = withSplitClient('other_user')(
   /* In the following piece of UI, we use the `isReady` prop as condition for
    * rendering a `Loading` component until the client with key `other_user` is ready */
   withSplitTreatments([feature_flag_2, feature_flag_3])(
@@ -53,8 +53,8 @@ const OtherSplits = withSplitClient('other_user')(
 export default function PageUsingHOCs() {
   return (
     <main>
-      <TestSplit />
-      <OtherSplits />
+      <FeatureOne />
+      <OtherFeatures />
     </main>
   );
 };
