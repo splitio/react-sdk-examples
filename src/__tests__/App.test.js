@@ -20,13 +20,13 @@ const config = {
   }
 };
 
-const ExampleSplitComponent = ({ splits }) => {
-  return splits.map((split, index) => {
+const ExampleSplitComponent = ({ featureFlagNames }) => {
+  return featureFlagNames.map((featureFlagName, index) => {
     return (
       <div key={index} >
-        <SplitTreatments names={[split]} >
+        <SplitTreatments names={[featureFlagName]} >
           {({ isReady, treatments }) => {
-            return <div>{isReady ? 'SDK ready.' : 'SDK not ready.'} Split {split} is {treatments[split].treatment}</div>
+            return <div>{isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag {featureFlagName} is {treatments[featureFlagName].treatment}</div>
           }}
         </SplitTreatments>
       </div>
@@ -38,24 +38,24 @@ describe('ExampleSplitComponent', () => {
   test('renders the correct treatment', async () => {
     const { getByText, findByText } = render(
       <SplitFactory config={config} >
-        <ExampleSplitComponent splits={['test-feature-on', 'test-feature-off']} />
+        <ExampleSplitComponent featureFlagNames={['test-feature-on', 'test-feature-off']} />
       </SplitFactory>
     );
 
     // On the initial rendered output, the SDK is not ready. So treatment values are control.
-    expect(getByText('SDK not ready. Split test-feature-on is control')).toBeTruthy();
-    expect(getByText('SDK not ready. Split test-feature-off is control')).toBeTruthy();
+    expect(getByText('SDK not ready. Feature flag test-feature-on is control')).toBeTruthy();
+    expect(getByText('SDK not ready. Feature flag test-feature-off is control')).toBeTruthy();
 
     // In localhost mode, the SDK is ready and the component re-rendered with the mocked treatment on next event-loop tick.
     // So we use `findByText` to wait for the component to update.
-    expect(await findByText('SDK ready. Split test-feature-on is on')).toBeTruthy();
-    expect(await findByText('SDK ready. Split test-feature-off is off')).toBeTruthy();
+    expect(await findByText('SDK ready. Feature flag test-feature-on is on')).toBeTruthy();
+    expect(await findByText('SDK ready. Feature flag test-feature-off is off')).toBeTruthy();
 
     // `waitFor` (https://testing-library.com/docs/dom-testing-library/api-async/#waitfor) can also be used:
     const [featureOn, featureOff] = await waitFor(
       () => [
-        getByText('SDK ready. Split test-feature-on is on'),
-        getByText('SDK ready. Split test-feature-off is off'),
+        getByText('SDK ready. Feature flag test-feature-on is on'),
+        getByText('SDK ready. Feature flag test-feature-off is off'),
       ]
     );
     expect(featureOn).toBeTruthy();
