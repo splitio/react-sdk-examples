@@ -4,12 +4,12 @@ import { feature_flag_1, feature_flag_2, feature_flag_3 } from '../sdkConfig';
 
 /* This example shows SplitClient and SplitTreatments components */
 
-function Loading() {
-  return <div>Loading SDK...</div>
-}
+function Loading({ splitKey }) {
+  return <div>Loading SDK {splitKey ? `for split key "${splitKey}"` : ''}</div>
+};
 
-function Timedout() {
-  return (<div>SDK timed out (check your SDK key)</div>);
+function Timedout({ splitKey }) {
+  return <div>SDK timed out {splitKey ? `for split key "${splitKey}"` : ''} (check your SDK key)</div>
 };
 
 export default function PageUsingComponents() {
@@ -47,7 +47,7 @@ export default function PageUsingComponents() {
                 )
               }</div>
             ) :
-              isTimedout ? <Timedout /> : <Loading />
+              isTimedout ? <Timedout splitKey='other_user' /> : <Loading splitKey='other_user' />
           }}
         </SplitTreatments>
       </SplitClient>

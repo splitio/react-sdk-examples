@@ -4,12 +4,12 @@ import { feature_flag_1, feature_flag_2, feature_flag_3 } from '../sdkConfig';
 
 /* This example shows withSplitClient and withSplitTreatments HOCs */
 
-function Loading() {
-  return <div>Loading SDK...</div>
-}
+function Loading({ splitKey }) {
+  return <div>Loading SDK {splitKey ? `for split key "${splitKey}"` : ''}</div>
+};
 
-function Timedout() {
-  return (<div>SDK timed out (check your SDK key)</div>);
+function Timedout({ splitKey }) {
+  return <div>SDK timed out {splitKey ? `for split key "${splitKey}"` : ''} (check your SDK key)</div>
 };
 
 /* `withSplitTreatments` is a HOC for wrapping render functions inside an SplitTreatments.
@@ -45,7 +45,7 @@ const OtherFeatures = withSplitClient('other_user')(
           )
         }</div>
       ) :
-        isTimedout ? <Timedout /> : <Loading />
+        isTimedout ? <Timedout splitKey='other_user' /> : <Loading splitKey='other_user' />
     }
   ), false, true // updateOnSdkUpdate: false, updateOnSdkTimedout: true, updateOnSdkReady: true (default)
 );
