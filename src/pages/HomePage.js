@@ -4,7 +4,7 @@ export default function HomePage() {
   return (
     <main>
       <div className='App-intro'>
-        This example showcases Splitio-React functions.
+        This example showcases Split React functions.
       </div>
       <div className='App-intro'>
         All pages render the same HTML output, but using different approaches for accessing features flags and treatments.

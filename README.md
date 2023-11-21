@@ -1,4 +1,4 @@
-# Splitio-React SDK: Single-Page App Example
+# Split React SDK: Single-Page App Example
 
 This is a basic SPA example that demonstrate the use of [Split SDK for React](https://github.com/splitio/react-client).
 
