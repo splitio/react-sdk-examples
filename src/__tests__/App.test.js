@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { SplitFactory, SplitTreatments } from '@splitsoftware/splitio-react';
+import { SplitFactoryProvider, SplitTreatments } from '@splitsoftware/splitio-react';
 
 const config = {
   core: {
@@ -37,9 +37,9 @@ const ExampleSplitComponent = ({ featureFlagNames }) => {
 describe('ExampleSplitComponent', () => {
   test('renders the correct treatment', async () => {
     const { getByText, findByText } = render(
-      <SplitFactory config={config} >
+      <SplitFactoryProvider config={config} >
         <ExampleSplitComponent featureFlagNames={['test-feature-on', 'test-feature-off']} />
-      </SplitFactory>
+      </SplitFactoryProvider>
     );
 
     // On the initial rendered output, the SDK is not ready. So treatment values are control.
