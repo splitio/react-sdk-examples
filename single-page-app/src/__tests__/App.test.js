@@ -1,5 +1,5 @@
 /**
- * If you're looking for how to test with Split SDK, you can use the localhost (offline) mode of the SDK (see https://help.split.io/hc/en-us/articles/360038825091-React-SDK#localhost-mode)
+ * If you're looking for how to test with Split SDK, you can use the localhost (offline) mode of the SDK (see https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk/#localhost-mode)
  * which is what we're doing here.
  *
  * It is not recommended to use the default (online) mode of the SDK in your tests because that will slow them down and increase their flakiness due to network latencies.

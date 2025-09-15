@@ -2,8 +2,8 @@
 // Replace authorizationKey with your client-side SDK key.
 const config = {
   core: {
-    authorizationKey: '<your-sdk-key>',
-    key: '<customer-key>'
+    authorizationKey: '<your-client-side-sdk-key>',
+    key: '<traffic-key>'
   }
 };
 
