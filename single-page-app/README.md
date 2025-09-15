@@ -14,8 +14,8 @@ Follow these steps to run the example app:
 npm install
 ```
 
-- Update Split config at `src/sdkConfig.js` to use your [SDK key](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#2-instantiate-the-sdk-and-create-a-new-sdk-factory-client).
-The SDK key is available on the Split user interface, in your *Admin Settings* page, under the *API keys* tab and the *SDK API keys* sub-tab. Choose the `client-side` type.
+- Update the SDK config at `src/sdkConfig.js` to use your [SDK key](https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#2-instantiate-the-sdk-and-create-a-new-sdk-factory-client).
+The SDK key is available on the Harness FME user interface, in your *Admin Settings* page, under the *API keys* tab and the *SDK API keys* sub-tab. Choose the `client-side` type.
 Also update the value of `feature_flag_x` constants with the name of your feature flags.
 
 - Start the app by running:
