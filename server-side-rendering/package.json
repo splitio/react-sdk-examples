@@ -11,7 +11,7 @@
     "preview": "cross-env NODE_ENV=production node server"
   },
   "dependencies": {
-    "@splitsoftware/splitio-react": "^2.4.0",
+    "@splitsoftware/splitio-react": "^2.6.0",
     "compression": "^1.8.1",
     "express": "^5.1.0",
     "react": "^19.1.1",
